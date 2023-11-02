@@ -1,4 +1,5 @@
 package com.api.hateoas.model;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import org.springframework.hateoas.RepresentationModel;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cuenta {
+public class Cuenta extends RepresentationModel<Cuenta> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +20,10 @@ public class Cuenta {
     @Column(length = 20,nullable = false,unique = true)
     private String numeroDeCuenta;
 
-    private float balance;
+    private float monto;
 
-
-
+    public Cuenta(Integer id, String numeroDeCuenta) {
+        this.id = id;
+        this.numeroDeCuenta = numeroDeCuenta;
+    }
 }

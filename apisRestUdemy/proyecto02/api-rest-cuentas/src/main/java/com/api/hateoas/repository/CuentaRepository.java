@@ -8,4 +8,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CuentaRepository extends JpaRepository<Cuenta,Integer> {
+
+
+    @Query("UPDATE Cuenta c SET c.monto=c.monto + ?1 WHERE c.id=?2")
+    @Modifying
+    void actualizarMonto(float monto,Integer id);
+
+
+
+
 }
