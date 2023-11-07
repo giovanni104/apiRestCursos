@@ -1,6 +1,7 @@
 package com.api.hateoas.controller;
 
 
+import com.api.hateoas.exception.CuentaNotFoundException;
 import com.api.hateoas.model.Cuenta;
 import com.api.hateoas.model.Monto;
 import com.api.hateoas.service.CuentaService;
@@ -102,12 +103,10 @@ public class CuentaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> eliminarCuenta(@PathVariable Integer id){
-        try{
+    public ResponseEntity<?> eliminarCuenta(@PathVariable Integer id) throws CuentaNotFoundException {
+
             cuentaService.delete(id);
             return ResponseEntity.noContent().build();
-        }catch (Exception exception){
-            return ResponseEntity.notFound().build();
-        }
+
     }
 }
