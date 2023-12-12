@@ -1,4 +1,4 @@
-package com.api.rest.controller;
+package com.api.rest.controller.v2;
 
 import com.api.rest.model.Voto;
 import com.api.rest.repositories.VotoRepository;
@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@RestController
-
+@RestController("VotoControllerV2")
+@RequestMapping("/v2")
 public class VotoController {
 
     @Autowired

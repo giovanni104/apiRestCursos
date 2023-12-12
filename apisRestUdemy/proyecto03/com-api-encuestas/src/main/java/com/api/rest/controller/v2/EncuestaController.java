@@ -1,22 +1,23 @@
-package com.api.rest.controller;
+package com.api.rest.controller.v2;
 
 
+import com.api.rest.exception.ResourceNotFoundException;
 import com.api.rest.model.Encuesta;
 import com.api.rest.repositories.EncuestaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.net.URI;
 import java.util.Optional;
 
-@RestController
+@RestController("EncuestaControllerV2")
+@RequestMapping("/v2")
 public class EncuestaController {
 
 
@@ -25,8 +26,9 @@ public class EncuestaController {
 
 
     @GetMapping("/encuestas")
-    public ResponseEntity<Iterable<Encuesta>> listarTodasLasEncuestas() {
-        return new ResponseEntity<>(encuestaRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<Iterable<Encuesta>> listarTodasLasEncuestas(Pageable pageable){
+        Page<Encuesta> encuestas = encuestaRepository.findAll(pageable);
+        return new ResponseEntity<>(encuestas, HttpStatus.OK);
     }
 
     @PostMapping("/encuestas")
@@ -45,7 +47,7 @@ public class EncuestaController {
 
     @GetMapping("/encuestas/{encuestaId}")
     public ResponseEntity<?> obtenerEncuesta(@PathVariable Long encuestaId) {
-
+        verifyEncuesta(encuestaId);
         Optional<Encuesta> encuesta = encuestaRepository.findById(encuestaId);
 
         if (encuesta.isPresent()) {
@@ -56,8 +58,8 @@ public class EncuestaController {
     }
 
     @PutMapping("/encuestas/{encuestaId}")
-    public ResponseEntity<?> actualizarEncuesta(@RequestBody Encuesta encuesta, @PathVariable Long encuestaId) {
-
+    public ResponseEntity<?> actualizarEncuesta(@Valid @RequestBody Encuesta encuesta, @PathVariable Long encuestaId) {
+        verifyEncuesta(encuestaId);
         encuesta.setId(encuestaId);
         encuestaRepository.save(encuesta);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -65,7 +67,17 @@ public class EncuestaController {
 
     @DeleteMapping("/encuestas/{encuestaId}")
     public ResponseEntity<?> eliminarEncuesta(@PathVariable Long encuestaId) {
+        verifyEncuesta(encuestaId);
         encuestaRepository.deleteById(encuestaId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+
+    protected void verifyEncuesta(Long encuestaId){
+
+        Optional<Encuesta> encuesta = encuestaRepository.findById(encuestaId);
+        if(!encuesta.isPresent()){
+            throw new ResourceNotFoundException("Encuesta con el ID : " + encuestaId + " no encontrada");
+        }}
 }

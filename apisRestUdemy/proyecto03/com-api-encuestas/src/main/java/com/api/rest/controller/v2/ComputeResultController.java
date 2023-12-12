@@ -1,4 +1,4 @@
-package com.api.rest.controller;
+package com.api.rest.controller.v2;
 import com.api.rest.dto.OpcionCount;
 import com.api.rest.dto.VotoResult;
 import com.api.rest.model.Voto;
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+@RestController("ComputeResultControllerV2")
+@RequestMapping("/v2")
 
 public class ComputeResultController {
 
