@@ -1,4 +1,4 @@
-package com.client.controller;
+package com.client.service;
 
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.client.model.Beer;
+import com.client.service.MyService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
