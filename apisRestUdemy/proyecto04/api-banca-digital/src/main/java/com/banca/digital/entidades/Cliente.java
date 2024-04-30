@@ -1,6 +1,5 @@
 package com.banca.digital.entidades;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
