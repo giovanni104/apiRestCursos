@@ -9,23 +9,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-//import com.andres.curso.springboot.webapp.springbootweb.models.User;
+import com.gio.curso.springboot.webapp.springboot_web.models.User;
 
 @Controller
 public class UserController {
 
     @GetMapping("/details")
-    public String details(Model model) {
-
-        
-         
-        model.addAttribute("title", "Hola Mundo Spring Boot");
-        model.addAttribute("name", "Giovanni");
-        model.addAttribute("lastname", "Hernandez");
-        return "details";
-    }
-
-   /*  @GetMapping("/details")
     public String details(Model model) {
 
         User user = new User("Andres", "Guzman");
@@ -48,6 +37,6 @@ public class UserController {
                 new User("Lalo", "Perez", "lalo@correo.com"),
                 new User("Juanita", "Roe", "juana@correo.com"),
                 new User("Andres", "Doe"));
-    }*/
+    }
 
 }

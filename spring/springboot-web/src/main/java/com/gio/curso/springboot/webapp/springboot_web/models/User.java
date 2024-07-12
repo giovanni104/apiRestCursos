@@ -39,7 +39,10 @@ public class User {
        
     }
 
-
+    public User(String name, String lastname, String email) {
+        this(name, lastname);
+        this.email = email;
+    }
 
 
 
