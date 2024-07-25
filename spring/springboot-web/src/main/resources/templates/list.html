@@ -24,7 +24,7 @@
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastname}"></td>
                 <td th:if="${user.email}" th:text="${user.email}"></td>
-                <td th:if="${not (user.email!=null)}" th:text="${' - '}"></td>
+                <td th:if="${not (user.email!=null)}" th:text="${' n/a '}"></td>
             </tr>
         </tbody>
 
