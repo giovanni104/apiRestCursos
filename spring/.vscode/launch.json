@@ -19,6 +19,26 @@
             "projectName": "springboot-di",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootDifacturaApplication<springboot-difactura>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gio.curso.springboot.di.factura.springboot_difactura.SpringbootDifacturaApplication",
+            "projectName": "springboot-difactura",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootErrorApplication<springboot-error>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gio.curso.springboot.error.springboot_error.SpringbootErrorApplication",
+            "projectName": "springboot-error",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

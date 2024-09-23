@@ -3,10 +3,15 @@ package com.gio.curso.springboot.di.factura.springboot_difactura.models;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
+@RequestScope
 public class Invoice {
 
     @Autowired
@@ -14,8 +19,37 @@ public class Invoice {
 
     @Value("${invoice.description}")
     private String description;
+    
     @Autowired
+    @Qualifier("default")
     private List<Item> items;
+
+public Invoice() {
+        System.out.println("Creando el componente de la factura");
+        System.out.println(client);
+        System.out.println(description);
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("Creando el componente de la factura");
+        client.setName(client.getName().concat(" Pepe"));
+        description = description.concat(" del cliente: ").concat(client.getName()).concat(" ")
+                .concat(client.getLastname());
+    }
+
+    
+    @PreDestroy
+    public void destroy() {
+        System.out.println("Destruyendo el componente o bean invoice!");
+    }
+
+
+
+
+
+
+
 
     public Client getClient() {
         return client;
@@ -40,4 +74,18 @@ public class Invoice {
     public void setItems(List<Item> items) {
         this.items = items;
     }
+
+    public int getTotal() {
+        return items.stream()
+                .map(item -> item.getImporte())
+                .reduce(0, (sum, importe) -> sum + importe);
+    }
+
+    /*
+     * public int getTotal() {
+     * return items.parallelStream()
+     * .mapToInt(Item::getImporte)
+     * .sum();
+     * }
+     */
 }
