@@ -39,6 +39,16 @@
             "projectName": "springboot-error",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootInterceptorApplication<springboot-interceptor>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gio.curso.springboot.app.interceptor.springboot_interceptor.SpringbootInterceptorApplication",
+            "projectName": "springboot-interceptor",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
