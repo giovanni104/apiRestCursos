@@ -59,6 +59,26 @@
             "projectName": "springboot-horario",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootAopApplication<springboot-aop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gio.curso.springboot.app.aop.springboot_aop.SpringbootAopApplication",
+            "projectName": "springboot-aop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootAopApplication<springboot-aop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gio.curso.springboot.app.aop.springbootaop.SpringbootAopApplication",
+            "projectName": "springboot-aop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
