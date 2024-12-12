@@ -21,12 +21,10 @@ import org.springframework.stereotype.Component;
 public class GreetingAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Pointcut("execution(* com.gio.curso.springboot.app.aop.springbootaop.services.GreetingService.*(..))")
-     private void greetingLoggerPointCut(){}
+ 
 
 
-
-    @Before("greetingLoggerPointCut()")
+    @Before("GreetingServicePintcuts.greetingLoggerPointCut()")
     public void loggerBefore(JoinPoint joinPoint) {
         
         String method = joinPoint.getSignature().getName();
@@ -34,14 +32,14 @@ public class GreetingAspect {
         logger.info("Antes: " + method + " con los argumentos " + args);
     }
     
-    @After("greetingLoggerPointCut()")
+    @After("GreetingServicePintcuts.greetingLoggerPointCut()")
     public void loggerAfter(JoinPoint joinPoint) {
         
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
         logger.info("Despues: " + method + " con los argumentos " + args);
     }
-    @AfterReturning("greetingLoggerPointCut()")
+    @AfterReturning("GreetingServicePintcuts.greetingLoggerPointCut()")
     public void loggerAfterReturningr(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -49,7 +47,7 @@ public class GreetingAspect {
         logger.info("Despues de retornar: " + method + " con los argumentos " + args);
     }
     
-    @AfterThrowing("greetingLoggerPointCut()")
+    @AfterThrowing("GreetingServicePintcuts.greetingLoggerPointCut()")
     public void loggerAfterThrowing(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -58,7 +56,7 @@ public class GreetingAspect {
     }
     
 
-   @Around("greetingLoggerPointCut()")
+   @Around("GreetingServicePintcuts.greetingLoggerPointCut()")
     public Object loggerAround(ProceedingJoinPoint joinPoint) throws Throwable{
         String method = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());

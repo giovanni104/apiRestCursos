@@ -18,10 +18,9 @@ import org.springframework.stereotype.Component;
 public class GreetingFooAspect {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("execution(* com.gio.curso.springboot.app.aop.springbootaop.services.GreetingService.*(..))")
-     private void greetingFooLoggerPointCut(){}
+
    
-    @Before("greetingFooLoggerPointCut()")
+    @Before("GreetingServicePintcuts.greetingFooLoggerPointCut()")
     public void loggerBefore(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
@@ -29,7 +28,7 @@ public class GreetingFooAspect {
         logger.info("Antes Primero: " + method + " invocado con los parametros " + args);
     }
     
-    @After("greetingFooLoggerPointCut()")
+    @After("GreetingServicePintcuts.greetingFooLoggerPointCut()")
     public void loggerAfter(JoinPoint joinPoint) {
 
         String method = joinPoint.getSignature().getName();
